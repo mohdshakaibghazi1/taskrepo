@@ -12,7 +12,6 @@ namespace WebApplication1.Controllers
             };
         public IActionResult Index()
         {
-
             return View(users);
         }
         [HttpGet]
@@ -25,8 +24,10 @@ namespace WebApplication1.Controllers
         { if(ModelState.IsValid)
             {
                 users.Add(model);
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+        else { return View(model); }
+            
         }
     }
 }
